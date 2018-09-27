@@ -30,7 +30,8 @@
     ],
     "clientFramework": "angularX",
     "jhiPrefix": "jhi",
-    "herokuDeployType": "git"
+    "herokuDeployType": "git",
+    "herokuAppName": "blog-microservice"
   },
   "git-provider": "GitHub",
   "git-company": "AleksandarNesovic",
