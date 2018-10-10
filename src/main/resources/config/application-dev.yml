@@ -39,9 +39,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/BlogMicroservice
-        username: postgres
-        password: qqq
+        url: postgres://gaenwqmqgukyof:33313ab2308acc1a8397bfb7b41ce813316be8c631ec995ac9d3d3e2af4ffb0b@ec2-54-247-101-205.eu-west-1.compute.amazonaws.com:5432/d4gojl5jghmq35
+        username: gaenwqmqgukyof
+        password: 33313ab2308acc1a8397bfb7b41ce813316be8c631ec995ac9d3d3e2af4ffb0b
         hikari:
             auto-commit: false
     jpa:
