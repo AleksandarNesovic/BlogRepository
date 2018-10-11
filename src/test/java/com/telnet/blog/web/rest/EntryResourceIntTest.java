@@ -56,6 +56,9 @@ public class EntryResourceIntTest {
     private static final Instant DEFAULT_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final String DEFAULT_IMG_PREVIEW = "AAAAAAAAAA";
+    private static final String UPDATED_IMG_PREVIEW = "BBBBBBBBBB";
+
     @Autowired
     private EntryRepository entryRepository;
 
@@ -99,7 +102,8 @@ public class EntryResourceIntTest {
         Entry entry = new Entry()
             .title(DEFAULT_TITLE)
             .content(DEFAULT_CONTENT)
-            .date(DEFAULT_DATE);
+            .date(DEFAULT_DATE)
+            .imgPreview(DEFAULT_IMG_PREVIEW);
         return entry;
     }
 
@@ -126,6 +130,7 @@ public class EntryResourceIntTest {
         assertThat(testEntry.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testEntry.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testEntry.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testEntry.getImgPreview()).isEqualTo(DEFAULT_IMG_PREVIEW);
     }
 
     @Test
@@ -196,7 +201,8 @@ public class EntryResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(entry.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].imgPreview").value(hasItem(DEFAULT_IMG_PREVIEW.toString())));
     }
     
     public void getAllEntriesWithEagerRelationshipsIsEnabled() throws Exception {
@@ -243,7 +249,8 @@ public class EntryResourceIntTest {
             .andExpect(jsonPath("$.id").value(entry.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.imgPreview").value(DEFAULT_IMG_PREVIEW.toString()));
     }
 
     @Test
@@ -269,7 +276,8 @@ public class EntryResourceIntTest {
         updatedEntry
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .imgPreview(UPDATED_IMG_PREVIEW);
 
         restEntryMockMvc.perform(put("/api/entries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -283,6 +291,7 @@ public class EntryResourceIntTest {
         assertThat(testEntry.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testEntry.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testEntry.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testEntry.getImgPreview()).isEqualTo(UPDATED_IMG_PREVIEW);
     }
 
     @Test

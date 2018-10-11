@@ -41,6 +41,9 @@ public class Entry implements Serializable {
     @Column(name = "jhi_date", nullable = false)
     private Instant date;
 
+    @Column(name = "img_preview")
+    private String imgPreview;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Blog blog;
@@ -98,6 +101,19 @@ public class Entry implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public String getImgPreview() {
+        return imgPreview;
+    }
+
+    public Entry imgPreview(String imgPreview) {
+        this.imgPreview = imgPreview;
+        return this;
+    }
+
+    public void setImgPreview(String imgPreview) {
+        this.imgPreview = imgPreview;
     }
 
     public Blog getBlog() {
@@ -166,6 +182,7 @@ public class Entry implements Serializable {
             ", title='" + getTitle() + "'" +
             ", content='" + getContent() + "'" +
             ", date='" + getDate() + "'" +
+            ", imgPreview='" + getImgPreview() + "'" +
             "}";
     }
 }

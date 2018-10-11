@@ -22,6 +22,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "imgPreview",
+            "fieldType": "String"
         }
     ],
     "relationships": [
